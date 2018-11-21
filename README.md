@@ -22,6 +22,8 @@ npm run build --report
 
 
 准备开发环境
+
 $ npm install -g vue-cli
+
 $ vue init webpack 项目名称
 
