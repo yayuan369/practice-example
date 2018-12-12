@@ -4,7 +4,7 @@
 
 ## Build Setup
 
-``` bash
+安装运行
 # install dependencies
 npm install
 
@@ -16,6 +16,14 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
-```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+注意npm run dev 之后 默认浏览器打开的是http://localhost:8080  请换成http://localhost:8080/vue-home/dist
+
+
+准备开发环境
+
+$ npm install -g vue-cli
+
+$ vue init webpack 项目名称
+
