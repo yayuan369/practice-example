@@ -3,7 +3,7 @@
     <div class="wrapper">
       <mu-appbar class="header" title="我的消息"></mu-appbar>
       <div class="main">
-        <div class="content">
+        <div class="content" v-if="accesstoken">
           <el-tabs v-model="activeName" @tab-click="handleClick" stretch>
             <el-tab-pane label="已读消息" name="first">
               <div style="text-align: center;">
@@ -20,6 +20,10 @@
             </el-tab-pane>
           </el-tabs>
         </div>
+        <div v-if="!accesstoken" class="message-tip">
+          <mu-button to="/vue-home/dist/login" color="primary">请先登录</mu-button>
+        </div>
+
       </div>
     </div>
     <FooterNav :father="mek"></FooterNav>
@@ -37,7 +41,10 @@ export default {
 
       // 图片弹窗
       dialogImageUrl: "",
-      dialogVisible: false
+      dialogVisible: false,
+
+      accesstoken: "",
+      readMsg: {}
     };
   },
 
@@ -45,8 +52,8 @@ export default {
     FooterNav
   },
   created() {
-    // this.accesstoken = localStorage.getItem("accesstoken");
-    // this.getData();
+    this.accesstoken = localStorage.getItem("accesstoken");
+    this.getData();
   },
   methods: {
     getData() {
@@ -58,7 +65,6 @@ export default {
         )
         .then(function(response) {
           that.readMsg = response.data.data;
-          console.log(that.readMsg);
         });
     },
     handleClick(tab, event) {
@@ -81,4 +87,15 @@ export default {
 };
 </script>
 <style lang='less' scoped>
+.button-wrapper {
+  text-align: center;
+  .mu-button{
+    margin: 8px;
+  }
+}
+.message-tip {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 100vh;
+}
 </style>

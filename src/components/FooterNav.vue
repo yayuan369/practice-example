@@ -17,7 +17,14 @@
 export default {
   data() {
     return {
-      barData: [
+      barData: [],
+      currentData: {}
+    };
+  },
+  created(){
+    let accesstoken = localStorage.getItem("accesstoken")
+    if(accesstoken){
+      this.barData = [
         {
           label: "主页",
           href: "#icon-unie60e",
@@ -42,11 +49,36 @@ export default {
           hrefActive: "#icon-gengduo2",
           route: "/vue-home/dist/more"
         }
-      ],
-      currentData: {}
-    };
+      ]
+    }else{
+      this.barData = [
+        {
+          label: "主页",
+          href: "#icon-unie60e",
+          hrefActive: "#icon-zhuye",
+          route: "/vue-home/dist"
+        },
+        {
+          label: "信息",
+          href: "#icon-xinxi",
+          hrefActive: "#icon-xinxi1",
+          route: "/vue-home/dist/message"
+        },
+        {
+          label: "我的",
+          href: "#icon-wode",
+          hrefActive: "#icon-wode_1",
+          route: "/vue-home/dist/login"
+        },
+        {
+          label: "更多",
+          href: "#icon-gengduo1",
+          hrefActive: "#icon-gengduo2",
+          route: "/vue-home/dist/more"
+        }
+      ]
+    }
   },
-
   components: {},
   props: ["father"],
   methods: {

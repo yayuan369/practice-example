@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="headerTabs">
+    <div class="headerTabs demo-infinite-container">
       <mu-tabs class="tabs" :value="activeTab" @change="tabChange" indicator-color="blue">
         <mu-tab value="all">全部</mu-tab>
         <mu-tab value="good">精华</mu-tab>
@@ -147,6 +147,13 @@ export default {
     justify-content: space-around;
   }
 }
+ .mu-tab-link,
+  .mu-tab-active {
+    white-space: nowrap;
+  }
+  .mu-tab{
+    min-width: 62px;
+  }
 .list {
   display: flex;
   border-bottom: 0.6rem solid #eff2f7;
@@ -162,7 +169,8 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     .list-title {
-      span {
+        text-align: left;
+      >span {
         background-color: #369219;
         color: #fff;
         padding: 0.2rem;
@@ -170,6 +178,9 @@ export default {
         font-size: 1rem;
         margin-right: 0.5rem;
       }
+        strong {
+          font-size: 1.4rem;
+        }
     }
     .timer {
       display: flex;
@@ -179,4 +190,8 @@ export default {
     }
   }
 }
+.nomore {
+    text-align: center;
+    padding: 1rem 0;
+  }
 </style>

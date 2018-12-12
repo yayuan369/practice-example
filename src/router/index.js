@@ -9,6 +9,7 @@ import more from '../pages/more.vue'
 import people from '../pages/people.vue'
 import content from '../pages/content.vue'
 import publish from '../pages/publish.vue'
+import login from '../pages/login.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -48,6 +49,11 @@ export default new Router({
       path: '/vue-home/dist/publish',
       name: 'publish',
       component: publish
+    },
+    {
+      path: '/vue-home/dist/login',
+      name: 'login',
+      component: login
     },
     
 
