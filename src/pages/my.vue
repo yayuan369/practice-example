@@ -16,7 +16,7 @@
 
         <!-- 内容 -->
         <!-- 最近话题 -->
-        <mu-list toggle-nested>
+        <mu-list>
           <mu-list-item v-if="user_msg.recent_topics" toggleNested :open="false">
             <mu-list-item-action>
               <mu-icon value="drafts"></mu-icon>
@@ -27,10 +27,41 @@
             </mu-list-item-action>
             <mu-list-item class="list-item-content" :to="{path:'/vue-home/dist/content',query:{id:item.id}}" v-for="item in user_msg.recent_topics" :key="item.id" slot="nested" title="Starred" :afterText="item.last_reply_at| formatDate">
               <!-- <mu-icon slot="left" value="hdr_weak" /> -->
-               <mu-list-item-title>{{item.title}}</mu-list-item-title>
+              <mu-list-item-title>{{item.title}}</mu-list-item-title>
             </mu-list-item>
             <span class="msg-num">{{user_msg.recent_topics.length}}</span>
           </mu-list-item>
+          <!--最近的回复-->
+          <mu-list-item class="list-item" v-if="user_msg.recent_replies" toggleNested :open="false">
+            <mu-list-item-action>
+              <mu-icon value="inbox"></mu-icon>
+            </mu-list-item-action>
+            <mu-list-item-title>最近的回复</mu-list-item-title>
+            <mu-list-item-action>
+              <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down"></mu-icon>
+            </mu-list-item-action>
+            <mu-list-item class="list-item-content" :to="{path:'/vue-home/dist/content',query:{id:item.id}}" v-for="item in user_msg.recent_replies" :key="item.id" slot="nested" title="Starred" :afterText="item.last_reply_at| formatDate">
+              <!-- <mu-icon slot="left" value="hdr_weak" /> -->
+              <mu-list-item-title>{{item.title}}</mu-list-item-title>
+            </mu-list-item>
+            <span class="msg-num">{{user_msg.recent_replies.length}}</span>
+          </mu-list-item>
+          <!--收藏的话题-->
+          <mu-list-item class="list-item" v-if="user_msg.collect_topics" toggleNested :open="false">
+            <mu-list-item-action>
+              <mu-icon value="grade"></mu-icon>
+            </mu-list-item-action>
+            <mu-list-item-title>收藏的话题</mu-list-item-title>
+            <mu-list-item-action>
+              <mu-icon class="toggle-icon" size="24" value="keyboard_arrow_down"></mu-icon>
+            </mu-list-item-action>
+            <mu-list-item class="list-item-content" :to="{path:'/vue-home/dist/content',query:{id:item.id}}" v-for="item in user_msg.collect_topics" :key="item.id" slot="nested" title="Starred" :afterText="item.last_reply_at| formatDate">
+              <!-- <mu-icon slot="left" value="hdr_weak" /> -->
+              <mu-list-item-title>{{item.title}}</mu-list-item-title>
+            </mu-list-item>
+            <span class="msg-num">{{user_msg.collect_topics.length}}</span>
+          </mu-list-item>
+
         </mu-list>
 
       </div>
@@ -50,7 +81,7 @@ export default {
       accesstoken: "",
       user: {},
       user_msg: {},
-      open:'hhh'
+      open: "hhh"
     };
   },
   // 获取储存的accesstoken
@@ -82,6 +113,7 @@ export default {
         .get("https://www.vue-js.com/api/v1/user/" + that.user.loginname)
         .then(function(response) {
           that.user_msg = response.data.data;
+          console.log("哈哈哈===", that.user_msg, that.user_msg.recent_topics);
         });
     },
     // 登出并清除缓存
