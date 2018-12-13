@@ -196,7 +196,6 @@ export default {
 // 内容
 .main {
   #content-tip {
-    position: relative;
     padding: 2rem;
     border-bottom: 0.1rem #dcdcdc solid;
     span {
@@ -215,7 +214,6 @@ export default {
   #content-about {
     position: relative;
     height: 5rem;
-    padding-bottom: 1rem;
     border-bottom: 0.1rem #dcdcdc solid;
     font-size: 1.2rem;
     color: #808080;
@@ -242,7 +240,6 @@ export default {
     .demo-checkbox {
       font-size: 1.6rem;
       margin-top: 1.6rem;
-      position: relative;
     }
   }
   .content-text {
