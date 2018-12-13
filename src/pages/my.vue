@@ -113,7 +113,7 @@ export default {
         .get("https://www.vue-js.com/api/v1/user/" + that.user.loginname)
         .then(function(response) {
           that.user_msg = response.data.data;
-          console.log("哈哈哈===", that.user_msg, that.user_msg.recent_topics);
+          console.log("哈哈哈===", that.user_msg, that.user_msg.collect_topics);
         });
     },
     // 登出并清除缓存
