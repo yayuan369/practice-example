@@ -18,6 +18,8 @@ npm run build
 npm run build --report
 
 
+仿照原文链接:https://github.com/aermin/vue-home
+
 注意npm run dev 之后 默认浏览器打开的是http://localhost:8080  请换成http://localhost:8080/vue-home/dist
 
 
